@@ -10,6 +10,11 @@
     return preg_match($emailFormat, $email);
     }
 
+    function checkDBEmail()
+    {
+        //this function checks if the inputted email is in the database and returns if admin or voter
+    }
+
     // Password validation. 
     // The password should have atleast 8 characters, one uppercase, one lowercase, one number, and one special character.
 
@@ -17,6 +22,11 @@
     {
         $passwordFormat = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/";
         return preg_match($passwordFormat, $password);
+    }
+
+    function checkDBPassword()
+    {
+        //this function checks if the inputted password matches the respective email.
     }
 
     // Candidate Name validation.
@@ -27,7 +37,7 @@
         $candidateNameFormat = "/^[A-Za-z]+(?: [A-Za-z]+)*$/";
         return preg_match($candidateNameFormat, $name);
     }
-
+    
     // Party Name validation.
     // The party name should 5 or more characters and only contain Upper and lowercase letters.
     function validatePartyName($party) 
