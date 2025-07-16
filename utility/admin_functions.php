@@ -1,12 +1,12 @@
 <?php
     require_once 'db_connect.php';
 
-    function insert_voter($email, $password) {
+    function insert_admin($email, $password) {
         global $pdo;
         $hashed = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("
-            INSERT INTO users (email, password, has_voted) 
-            VALUES (:email, :password, 0)
+            INSERT INTO admins (email, password) 
+            VALUES (:email, :password)
         ");
 
         return $stmt->execute([
@@ -15,21 +15,21 @@
         ]);
     }
 
-    function get_all_voters() {
+    function get_all_admins() {
         global $pdo;
-        $stmt = $pdo->query("SELECT id, email, password, has_voted FROM users");
+        $stmt = $pdo->query("SELECT id, email, password FROM admins");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function delete_voter($id) {
+    function delete_admin($id) {
         global $pdo;
-        $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
+        $stmt = $pdo->prepare("DELETE FROM admins WHERE id = :id");
         return $stmt->execute([':id' => $id]);
     }
 
-    function getVoterByEmail($email) {
+    function getadminByEmail($email) {
         global $pdo;
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt = $pdo->prepare("SELECT * FROM admins WHERE email = :email");
         $stmt->execute([':email' => $email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

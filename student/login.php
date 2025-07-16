@@ -13,15 +13,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "❗ Invalid email format.";
     } else {
         $voter = getVoterByEmail($email);
-
-        if (!$voter) {
+        // also check if admin is logging in
+        $admin = getAdminByEmail($email);
+        if (!$voter || !$admin) {
             $msg = "❌ Email not found.";
         } else {
-            if (password_verify($password, $voter['password'])) {
+            // check voter password
+            if ($voter && password_verify($password, $voter['password'])) {
                 // ✅ Successful login
                 $_SESSION['voter_id'] = $voter['id'];
                 $_SESSION['voter_email'] = $voter['email'];
                 header("Location: voter_dashboard.php"); // redirect to main voter page
+                exit;
+            } else {
+                $msg = "❌ Incorrect password.";
+            }
+
+            // check admin password
+            if ($admin && password_verify($password, $admin['password'])) {
+                // ✅ Successful admin login
+                $_SESSION['admin_id'] = $admin['id'];
+                $_SESSION['admin_email'] = $admin['email'];
+                header("Location: admin_dashboard.php"); // redirect to main admin page
                 exit;
             } else {
                 $msg = "❌ Incorrect password.";
