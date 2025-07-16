@@ -1,4 +1,36 @@
-<!-- ========== LOGIN | SAME LAYOUT ITSURA BASTA========== -->
+<?php
+session_start();
+require_once '../utility/voter_functions.php'; // Adjust path as needed
+require_once '../utility/validation.php'; // Adjust path as needed
+
+$msg = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if (!validateEmail($email)) {
+        $msg = "❗ Invalid email format.";
+    } else {
+        $voter = getVoterByEmail($email);
+
+        if (!$voter) {
+            $msg = "❌ Email not found.";
+        } else {
+            if (password_verify($password, $voter['password'])) {
+                // ✅ Successful login
+                $_SESSION['voter_id'] = $voter['id'];
+                $_SESSION['voter_email'] = $voter['email'];
+                header("Location: voter_dashboard.php"); // redirect to main voter page
+                exit;
+            } else {
+                $msg = "❌ Incorrect password.";
+            }
+        }
+    }
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,16 +40,19 @@
 </head>
 <body>
     <h2>Student Login</h2>
-    <form action="#" method="post">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+    <form method="POST">
+        <fieldset style="max-width: 400px;">
+            <legend><strong>Form Title</strong></legend>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" id="email" required><br><br>
 
-        <button type="submit">Login</button>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password" required><br><br>
+
+            <button type="submit">Submit</button>
+        </fieldset>
     </form>
+    <?php if (!empty($msg)) echo "<p>$msg</p>"; ?>
 </body>
 </html>
-
-<!-- ========== EMAIL/PASSWORD for ADMIN ========== -->

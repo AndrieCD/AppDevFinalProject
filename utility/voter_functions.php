@@ -17,7 +17,7 @@
 
     function get_all_voters() {
         global $pdo;
-        $stmt = $pdo->query("SELECT id, email, has_voted FROM voters");
+        $stmt = $pdo->query("SELECT id, email, password, has_voted FROM voters");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -25,5 +25,12 @@
         global $pdo;
         $stmt = $pdo->prepare("DELETE FROM voters WHERE id = :id");
         return $stmt->execute([':id' => $id]);
+    }
+
+    function getVoterByEmail($email) {
+        global $pdo;
+        $stmt = $pdo->prepare("SELECT * FROM voters WHERE email = :email");
+        $stmt->execute([':email' => $email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 ?>
