@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../assets/css/student.css">
 </head>
 <body>
@@ -17,27 +17,24 @@
 <div class="container">
     <div class="left-panel">
         <h2>Welcome back!</h2>
-        <p>Kindly put your Username and Password</p>
+        <p>Kindly put your Email and Password</p>
 
-        <form action="#" method="post">
-            <div class="form-group">
-                <input type="text" name="username" placeholder="Username" required>
-            </div>
+    <form method="POST">
+        <fieldset style="max-width: 400px;">
+            <label for="email">Email</label><br>
+            <input type="text" name="email" id="email" placeholder="Enter your email" required><br><br>
 
-            <div class="form-group">
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required><br><br>
 
-            <div class="form-actions">
-                <span></span>
-                <a href="#">Forgot Password?</a>
-            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </fieldset>
+    </form>
 
-            <button class="login-btn" type="submit">Login</button>
-        </form>
 
         <div class="register-link">
-            Not yet registered? <a href="#">Register now</a>
+            Not yet registered? 
+            <!--<a href="#">Register now</a>-->
         </div>
     </div>
 

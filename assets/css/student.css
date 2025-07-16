@@ -10,6 +10,13 @@ body {
     width: 100vw;
 }
 
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+
 /*splash na screen*/
 .splash {
     position: absolute;
