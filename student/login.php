@@ -1,7 +1,8 @@
 <?php
+/*
 session_start();
 require_once '../utility/voter_functions.php'; // Adjust path as needed
-require_once '../utility/validation.php'; // Adjust path as needed
+require_once '../utility/validation.php';      // Adjust path as needed
 
 $msg = '';
 
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // ✅ Successful login
                 $_SESSION['voter_id'] = $voter['id'];
                 $_SESSION['voter_email'] = $voter['email'];
-                header("Location: voter_dashboard.php"); // redirect to main voter page
+                header("Location: voter_dashboard.php"); // Redirect after login
                 exit;
             } else {
                 $msg = "❌ Incorrect password.";
@@ -42,30 +43,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+*/
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BOBOTO Login</title>
+  <link rel="stylesheet" href="../assets/css/student.css" />
 </head>
 <body>
-    <h2>Student Login</h2>
-    <form method="POST">
-        <fieldset style="max-width: 400px;">
-            <legend><strong>Form Title</strong></legend>
 
-            <label for="email">Email</label><br>
-            <input type="email" name="email" id="email" required><br><br>
+  <div class="login-wrapper">
 
-            <label for="password">Password</label><br>
-            <input type="password" name="password" id="password" required><br><br>
+    <!-- Left Panel: Login Form -->
+    <div class="login-form-panel">
+      <div class="form-container">
+        <h1>Welcome back!</h1>
+        <p class="subtitle">Kindly put your Email and password</p>
 
-            <button type="submit">Submit</button>
-        </fieldset>
-    </form>
-    <?php if (!empty($msg)) echo "<p>$msg</p>"; ?>
+        <!-- Login Form -->
+        <form action="login.php" method="POST">
+            <input type="text" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Right Panel: Logo & Branding -->
+    <div class="login-image-panel">
+      <div class="image-overlay">
+<img src="assets/LogInSide.png" alt="BOBOTO Logo" class="logo">
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>
