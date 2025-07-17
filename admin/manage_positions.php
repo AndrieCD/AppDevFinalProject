@@ -27,11 +27,17 @@
     </div>
 
     <!-- Main Dashboard Content -->
-    <main class="dashboard">
-        <h2>Manage Positions</h2>
-        <div>
-            <!-- chuchu -->
-        </div>
+    <main class="PositionManager">
+        <h1>Manage Positions</h1>
+        
+        <!-- ======= Position Entry ======= -->
+        <section class="position-form">
+            <form method="POST" class="cardPos">
+                <h3>Add New Position</h3>
+                
+            </form>
+        </section>
+
     </main>
 
 </body>
