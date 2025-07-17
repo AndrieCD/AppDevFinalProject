@@ -1,124 +1,87 @@
+<?php
+/*
+session_start();
+require_once '../utility/voter_functions.php'; // Adjust path as needed
+require_once '../utility/validation.php';      // Adjust path as needed
+
+$msg = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if (!validateEmail($email)) {
+        $msg = "❗ Invalid email format.";
+    } else {
+        $voter = getVoterByEmail($email);
+        // also check if admin is logging in
+        $admin = getAdminByEmail($email);
+        if (!$voter || !$admin) {
+            $msg = "❌ Email not found.";
+        } else {
+            // check voter password
+            if ($voter && password_verify($password, $voter['password'])) {
+                // ✅ Successful login
+                $_SESSION['voter_id'] = $voter['id'];
+                $_SESSION['voter_email'] = $voter['email'];
+                header("Location: voter_dashboard.php"); // Redirect after login
+                exit;
+            } else {
+                $msg = "❌ Incorrect password.";
+            }
+
+            // check admin password
+            if ($admin && password_verify($password, $admin['password'])) {
+                // ✅ Successful admin login
+                $_SESSION['admin_id'] = $admin['id'];
+                $_SESSION['admin_email'] = $admin['email'];
+                header("Location: admin_dashboard.php"); // redirect to main admin page
+                exit;
+            } else {
+                $msg = "❌ Incorrect password.";
+            }
+        }
+    }
+}
+*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Voting Page</title>
+  <title>BOBOTO Login</title>
   <link rel="stylesheet" href="../assets/css/student.css" />
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <nav class="top-nav">
-    <div class="nav-left">
-      <img src="../assets/BobotoLogo.png" alt="BOBOTO Logo" class="nav-logo">
-    </div>
-    <div class="nav-right">
-      <a href="#" class="nav-link">Vote</a>
-      <a href="login.php" class="nav-link">Log-out</a>
+  <div class="login-wrapper">
 
-    </div>
-  </nav>
+    <!-- Left Panel: Login Form -->
+    <div class="login-form-panel">
+      <div class="form-container">
+        <h1>Welcome back!</h1>
+        <p class="subtitle">Kindly put your Email and password</p>
 
-  <!-- Welcome Banner (outside green nav) -->
-  <div class="welcome-banner">
-    <h2>Welcome, Student Name!</h2>
-  </div>
+        <!-- Login Form -->
+        <form action="login.php" method="POST">
+            <input type="text" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
 
-  <!-- Splash Screen -->
-  <div id="splash-screen">
-    <div class="splash-content">
-      <img src="../assets/Logo.png" alt="Vote Logo" class="splash-logo" />
-      <h1 style="font-size: 48px;">Your vote matters</h1>
-    </div>
-  </div>
-
-  <!-- Main Dashboard Container -->
-  <div class="dashboard-container">
-
-    <!-- Election Info -->
-    <section class="election-info">
-      <h3>Student Organization Election 2025</h3>
-      <p>Voting Period: July 20–25, 2025</p>
-    </section>
-
-    <!-- Voting Form -->
-    <form class="voting-form" method="POST" action="votesuccess.php">
-
-      <!-- PRESIDENT -->
-      <div class="position-group">
-        <h4>President</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="president" value="1" required>
-            <img src="../assets/images/jane.jpg" alt="Naruto Uzumaki">
-            <h5>Naruto Uzumaki</h5>
-            <p>Party A</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="president" value="2">
-            <img src="../assets/images/john.jpg" alt="Sasuke Uchiha">
-            <h5>Sasuke Uchiha</h5>
-            <p>Party B</p>
-          </label>
-        </div>
       </div>
+    </div>
 
-      <!-- VICE PRESIDENT -->
-      <div class="position-group">
-        <h4>Vice President</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="vp" value="3" required>
-            <img src="../assets/images/emily.jpg" alt="Hinata">
-            <h5>Hinata</h5>
-            <p>Party A</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="vp" value="4">
-            <img src="../assets/images/mark.jpg" alt="Sakura">
-            <h5>Sakura</h5>
-            <p>Party B</p>
-          </label>
-        </div>
-      </div>
-
-      <!-- SECRETARY -->
-      <div class="position-group">
-        <h4>Secretary</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="secretary" value="5" required>
-            <img src="../assets/images/alex.jpg" alt="Shikamaru">
-            <h5>Shikamaru</h5>
-            <p>Party C</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="secretary" value="6">
-            <img src="../assets/images/dana.jpg" alt="Shikadai">
-            <h5>Shikadai</h5>
-            <p>Party D</p>
-          </label>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="vote-now-btn">Submit Vote</button>
-    </form>
+    <!-- Right Panel: Logo & Branding -->
+<div class="login-image-panel">
+  <div class="image-overlay">
+    <img src="../assets/LogInSide.png" alt="Philippines Map" class="map-overlay">
   </div>
+</div>
 
-  <!-- Splash Screen Script -->
-  <script>
-    window.addEventListener("load", () => {
-      const splash = document.getElementById("splash-screen");
-      setTimeout(() => {
-        splash.classList.add("fade-out");
-      }, 2000); // Show for 2 seconds
-    });
-  </script>
+  </div>
 
 </body>
 </html>
