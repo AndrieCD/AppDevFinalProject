@@ -29,9 +29,11 @@
     <main class="dashboard">
         <h1>Welcome, Admin</h1>
         <div class="IndexCards">
-            <div class="IndexCard"><a href="manage_parties.php">Manage Parties</a></div>
-            <div class="IndexCard"><a href="manage_positions.php">Manage Positions</a></div>
-            <div class="IndexCard"><a href="manage_voters.php">Manage Voters</a></div>
+            <div class="IndexCards">
+            <a href="manage_parties.php" class="IndexCard">Manage Parties</a>
+            <a href="manage_positions.php" class="IndexCard">Manage Positions</a>
+            <a href="manage_voters.php" class="IndexCard">Manage Voters</a>
+            </div>
         </div>
     </main>
 
