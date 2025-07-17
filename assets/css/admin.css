@@ -5,6 +5,7 @@ body {
     color: white;
 }
 
+/* DASHBOARD */
 .dashboard h1 {
     font-size: 45px;
     margin-bottom: 20px;
@@ -87,6 +88,8 @@ body {
     color: white;
 }
 
+/* MANAGE PARTY PAGE */
+
 .PartyManager {
     display: flex;
     flex-direction: column;
@@ -95,6 +98,7 @@ body {
     padding: 2rem;
 }
 
+/* Add New Party Card */
 .cardParty {
     background-color: #393a39;
     padding: 2rem;
@@ -208,14 +212,14 @@ body {
 }
 
 .existing-parties-container {
-    background: #393a39;
+    background-color: #393a39;
     padding: 2rem;
     border-radius: 25px;
     width: 800px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.existing-parties-title h1 {
+.existing-parties-title h3 {
     margin-top: 0;
     font-size: 25px;
     margin-bottom: 1.5rem;
@@ -230,7 +234,7 @@ body {
 
 .inner-party-card {
     width: 300px;
-    background: #393a39;
+    background-color: #393a39;
     border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -252,16 +256,15 @@ body {
     background-color: #a93226;
 }
 
-/* ===== Card Styling for Position Manager ===== */
-.PositionManager {
-    padding: 40px;
+/* .PositionManager {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
     width: 100%;
     font-family: Arial, sans-serif;
     color: white;
+    gap: 3rem;
+    padding: 2rem;
 }
 
 
@@ -270,12 +273,10 @@ body {
     border: none;
     border-radius: 12px;
     padding: 25px;
-    width: 900px; /* Fixed width for all cards */
+    width: 900px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease;
 }
-
-
 
 .cardPosition h3 {
     margin-top: 0;
@@ -332,67 +333,213 @@ body {
 
 .cardPosition form button:hover {
     background-color: #cc0000;
+} */
+
+/* MANAGE POSITION PAGE  */
+
+.position-manager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+
 }
 
-/* Added from leo huahha */
-
-.table-wrapper {
-    overflow-x: auto;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
+.position-manager h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
     color: white;
-    min-width: 800px;
 }
 
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: none;
+.position-card {
+    background-color: #393a39;
+    padding: 2rem;
+    border-radius: 25px;
+    width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+.position-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: white;
+}
 
-th {
-    background-color: transparent;
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: bold;
-    border-bottom: 2px solid #ccc;
+    color: white;
 }
 
+.position-card input[type="text"] {
+    width: 90%;
+    padding: 10px 14px;
+    background-color: #2b2b2b;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-size: 16px;
+}
 
-.delete-btn {
-    padding: 6px 12px;
+.btn-primary {
+    background-color: #3a855d;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2f684b;
+}
+
+.position-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.position-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #4a4a4a;
+    color: white;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.btn-delete {
     background-color: #c0392b;
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
- font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-
-.delete-btn:hover {
+.btn-delete:hover {
     background-color: #a93226;
 }
 
+/* Voters Page */
 
-.save-btn {
-    display: block;
-    margin: 2rem auto 0;
-    padding: 10px 20px;
-    background-color: #2f684b;
-    color: white;
-    font-weight: bold;
-    border: none;
- border-radius: 6px;
- cursor: pointer;
+/* ===== VOTERS PAGE STYLES ===== */
+
+/* .PartyManager {
+    padding: 2rem;
+    color: #f0f0f0;
+    background-color: #202226;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.PartyManager h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
+.AddPartySection,
+.Partycards {
+    margin-bottom: 2rem;
+    width: 900px;
+}
 
-.save-btn:hover {
-    background-color: #1b3b2b;
-    }
+/* .add-party-card,
+.existing-parties-container {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 900px;
+} */
 
+/* .add-party-card h2,
+.existing-parties-title h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+} */
+
+.voter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.voter-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #2b2b2b;
+    color: #f0f0f0;
+}
+
+.voter-input::placeholder {
+    color: #888;
+}
+
+.btn-add-voter,
+.btn-delete {
+    background-color: #3a86ff;
+    border: none;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-add-voter:hover {
+    background-color: #1f6fe2;
+}
+
+.btn-delete {
+    background-color: #e63946;
+}
+
+.btn-delete:hover {
+    background-color: #d62828;
+}
+
+.voter-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.voter-table th,
+.voter-table td {
+    border: 1px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+    color: #e0e0e0;
+}
+
+.voter-table th {
+    background-color: #292929;
+}
+
+.voter-table tr:nth-child(even) {
+    background-color: #1b1b1b;
+}

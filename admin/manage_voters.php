@@ -1,26 +1,26 @@
 <?php
 session_start();
 
-
-// storage voters
+// Initialize voters list if not set
 if (!isset($_SESSION['voters'])) {
     $_SESSION['voters'] = [];
 }
 
+// Add voter
+if (isset($_POST['add_voter'])) {
+    $email = trim($_POST['voter_email']);
+    if (!empty($email)) {
+        $_SESSION['voters'][] = ['email' => $email, 'voted' => false];
+    }
+}
 
-// delete
+// Delete voter
 if (isset($_POST['delete_voter'])) {
     $index = $_POST['delete_voter'];
     unset($_SESSION['voters'][$index]);
     $_SESSION['voters'] = array_values($_SESSION['voters']);
 }
-
-
-// save button functionality ala pang ginagawa
-if (isset($_POST['save'])) {
-}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,6 @@ if (isset($_POST['save'])) {
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
-
 
 <!-- ======= NAVBAR ======= -->
 <div class="navbar">
@@ -42,68 +41,64 @@ if (isset($_POST['save'])) {
         <li><a href="index.php">Dashboard</a></li>
         <li><a href="manage_parties.php">Parties</a></li>
         <li><a href="manage_positions.php">Positions</a></li>
-        <li><a href="manage_voters.php">Voters</a></li>
+        <li><a href="manage_voters.php" class="active">Voters</a></li>
         <li><a href="#">Logout</a></li>
     </ul>
 </div>
-
 
 <!-- ======= MAIN CONTENT ======= -->
 <main class="PartyManager">
     <h1>Manage Voters</h1>
 
+    <!-- ======= ADD VOTER ======= -->
+    <section class="AddPartySection">
+        <div class="card add-party-card">
+            <h2>Add New Voter</h2>
+            <form method="POST" class="voter-form">
+                <input type="email" name="voter_email" required placeholder="Enter voter email" class="voter-input">
+                <button type="submit" name="add_voter" class="btn-add-voter">Add Voter</button>
+            </form>
+        </div>
+    </section>
 
-    <!-- ======= EXISTING VOTERS LIST ======= -->
+    <!-- ======= VOTER LIST ======= -->
     <section class="Partycards">
         <div class="card existing-parties-container">
             <div class="existing-parties-title">
-                <h1>Existing Voters</h1>
+                <h2>Voter List</h2>
             </div>
             <div class="table-wrapper">
                 <form method="POST">
-                    <table>
+                    <table class="voter-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Student ID</th>
-                                <th>Course/Program</th>
-                                <th>Year Level</th>
-                                <th>Section</th>
                                 <th>Email</th>
-                                <th>Delete</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                       <tbody>
+                        <tbody>
                             <?php foreach ($_SESSION['voters'] as $index => $voter): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($voter['id']) ?></td>
-                                    <td><?= htmlspecialchars($voter['name']) ?></td>
-                                    <td><?= htmlspecialchars($voter['student_id']) ?></td>
-                                    <td><?= htmlspecialchars($voter['course']) ?></td>
-                                    <td><?= htmlspecialchars($voter['year_level']) ?></td>
-                                    <td><?= htmlspecialchars($voter['section']) ?></td>
                                     <td><?= htmlspecialchars($voter['email']) ?></td>
+                                    <td><?= $voter['voted'] ? 'Voted' : 'Not Voted' ?></td>
                                     <td>
-                                        <button type="submit" name="delete_voter" value="<?= $index ?>" class="delete-btn">Delete</button>
+                                        <button type="submit" name="delete_voter" value="<?= $index ?>" class="btn-delete">Delete</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                             <?php if (empty($_SESSION['voters'])): ?>
-                                <tr><td colspan="8" style="text-align: center;">No voters added yet.</td></tr>
+                                <tr>
+                                    <td colspan="3" style="text-align: center;">No voters added yet.</td>
+                                </tr>
                             <?php endif; ?>
                         </tbody>
                     </table>
-                    <button type="submit" name="save" class="save-btn">Save</button>
                 </form>
             </div>
         </div>
     </section>
 </main>
 
-
 </body>
 </html>
-
-
-

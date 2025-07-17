@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-// Sample positions (replace with DB-fetch if needed)
-if (!isset($_SESSION['positions'])) {
-    $_SESSION['positions'] = [
-        ['id' => 1, 'name' => 'President'],
-        ['id' => 2, 'name' => 'Vice President'],
-        ['id' => 3, 'name' => 'Secretary'],
-        ['id' => 4, 'name' => 'Treasurer']
-    ];
-}
+// // Sample positions (replace with DB-fetch if needed)
+// if (!isset($_SESSION['positions'])) {
+//     $_SESSION['positions'] = [
+//         ['id' => 1, 'name' => 'President'],
+//         ['id' => 2, 'name' => 'Vice President'],
+//         ['id' => 3, 'name' => 'Secretary'],
+//         ['id' => 4, 'name' => 'Treasurer']
+//     ];
+// }
 
 if (!isset($_SESSION['parties'])) {
     $_SESSION['parties'] = [];
@@ -139,9 +139,9 @@ function getPositionName($id) {
 
     <!-- ======= PARTY LIST ======= -->
     <section class="Partycards">
-        <div class="card existing-parties-container">
+        <div class="existing-parties-container">
             <div class="existing-parties-title">
-                <h1>Existing Parties</h1>
+                <h3>Existing Parties</h3>
             </div>
             <div class="existing-parties-list">
                 <?php foreach ($_SESSION['parties'] as $index => $party): ?>
