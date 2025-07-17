@@ -333,3 +333,66 @@ body {
 .cardPosition form button:hover {
     background-color: #cc0000;
 }
+
+/* Added from leo huahha */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    min-width: 800px;
+}
+
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: none;
+}
+
+
+th {
+    background-color: transparent;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+}
+
+
+.delete-btn {
+    padding: 6px 12px;
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+ font-weight: bold;
+}
+
+
+.delete-btn:hover {
+    background-color: #a93226;
+}
+
+
+.save-btn {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 10px 20px;
+    background-color: #2f684b;
+    color: white;
+    font-weight: bold;
+    border: none;
+ border-radius: 6px;
+ cursor: pointer;
+}
+
+
+.save-btn:hover {
+    background-color: #1b3b2b;
+    }
+
