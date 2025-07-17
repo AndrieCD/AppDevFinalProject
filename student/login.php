@@ -75,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Right Panel: Logo & Branding -->
-    <div class="login-image-panel">
-      <div class="image-overlay">
-<img src="assets/LogInSide.png" alt="BOBOTO Logo" class="logo">
-      </div>
-    </div>
+<div class="login-image-panel">
+  <div class="image-overlay">
+    <img src="../assets/LogInSide.png" alt="Philippines Map" class="map-overlay">
+  </div>
+</div>
 
   </div>
 
