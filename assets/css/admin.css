@@ -1,0 +1,285 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background-color: #202226;
+    color: white;
+}
+
+.navbar {
+    background: #3a855d;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 4.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logo-img {
+    height: 50px;
+    width: 170px;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 520;
+    color: white;
+}
+
+.PartyManager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.cardParty {
+    background-color: #393a39;
+    padding: 2rem;
+    border-radius: 25px;
+    width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.cardParty h3 {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row input[type="text"] {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #393a39;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.candidate-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.candidate-box input,
+.candidate-box select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #393a39;
+    color: white;
+    font-size: 16px;
+}
+
+.candidate-box input {
+    width: 450px;
+    height: 40px;
+}
+
+.candidate-box select {
+    width: 200px;
+}
+
+.candidate-box button {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.candidate-box button:hover {
+    background-color: #a93226;
+}
+
+.add-candidate-btn {
+    background-color: #3a855d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-candidate-btn:hover {
+    background-color: #2f684b;
+}
+
+.submit-btn-inline {
+    height: 50px;
+    padding: 0 250px;
+    background-color: #3a855d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn-inline:hover {
+    background-color: #2f684b;
+}
+
+.addPartyButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.existing-parties-container {
+    background: #393a39;
+    padding: 2rem;
+    border-radius: 25px;
+    width: 800px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.existing-parties-title h1 {
+    margin-top: 0;
+    font-size: 25px;
+    margin-bottom: 1.5rem;
+}
+
+.existing-parties-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.inner-party-card {
+    width: 300px;
+    background: #393a39;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.deletepartyButton {
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 1rem;
+}
+
+.deletepartyButton:hover {
+    background-color: #a93226;
+}
+
+/* ===== Card Styling for Position Manager ===== */
+.PositionManager {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+
+.cardPosition {
+    background-color: #393a39;
+    border: none;
+    border-radius: 12px;
+    padding: 25px;
+    width: 900px; /* Fixed width for all cards */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+
+
+.cardPosition h3 {
+    margin-top: 0;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.cardPosition input[type="text"],
+.cardPosition select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.cardPosition button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cardPosition button:hover {
+    background-color: #0c70d4;
+}
+
+.cardPosition ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.cardPosition li {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.cardPosition form {
+    display: inline;
+}
+
+.cardPosition form button {
+    background-color: #ff4d4d;
+    margin-left: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.cardPosition form button:hover {
+    background-color: #cc0000;
+}

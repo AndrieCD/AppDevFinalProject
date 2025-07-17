@@ -8,7 +8,7 @@
 /* GENERAL BODY */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #1e1f22;
 }
 
@@ -20,7 +20,7 @@ body {
 
 .login-form-panel {
   width: 50%;
-  background: url('../LogInBG.jpg') no-repeat center center;
+  background: url("../LogInBG.jpg") no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -36,8 +36,6 @@ body {
   text-align: center;
   border-top: 8px solid #3c805c;
 }
-
-
 
 .form-container h1 {
   margin-bottom: 10px;
@@ -80,14 +78,11 @@ h2 {
   opacity: 1; /* optional: adjust if you want a subtle background look */
 }
 
-
 .image-overlay {
   position: relative;
   width: 100%;
   height: 100vh; /* Full height of panel */
 }
-
-
 
 /* Style inputs and button */
 input[type="text"],
@@ -160,8 +155,14 @@ button:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ========================== */
@@ -184,13 +185,11 @@ button:hover {
   }
 }
 
-
 /* ========================== */
 /* STUDENT LANDING PAGE       */
 /* ========================== */
 
 /* Splash Screen */
-
 
 #splash-screen.fade-out {
   opacity: 0;
@@ -214,7 +213,7 @@ button:hover {
   margin: 40px auto;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: 0 0 30px;
   border-top: 12px solid #3c805c;
   overflow: hidden;
@@ -311,7 +310,7 @@ button:hover {
 
 .candidate-card:hover {
   border-color: #3c805c;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .candidate-card input[type="radio"] {
@@ -390,7 +389,7 @@ button:hover {
   background-color: #3c805c;
   padding: 12px 24px;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .nav-left {
@@ -439,64 +438,55 @@ button:hover {
 }
 
 /* SUCCESS */
-    .success-container {
-      max-width: 500px;
-      margin: 80px auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      padding: 40px 30px;
-      text-align: center;
-      border-top: 8px solid #3c805c;
-    }
+.success-container {
+  max-width: 500px;
+  margin: 80px auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  text-align: center;
+  border-top: 8px solid #3c805c;
+}
 
-    
+.success-title {
+  font-size: 28px;
+  color: #3c805c;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-    .success-title {
-      font-size: 28px;
-      color: #3c805c;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.success-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+}
 
-    .success-message {
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 30px;
-    }
+.view-results-btn {
+  background-color: #3c805c;
+  color: white;
+  font-size: 16px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    .view-results-btn {
-      background-color: #3c805c;
-      color: white;
-      font-size: 16px;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+.view-results-btn:hover {
+  background-color: #336a4d;
+}
 
-    .view-results-btn:hover {
-      background-color: #336a4d;
-    }
-
-    /* Optional background overlay */
+/* Optional background overlay */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: url('../LandingPageBG.jpg') no-repeat center center;
+  font-family: "Segoe UI", sans-serif;
+  background: url("../LandingPageBG.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed; /* optional: makes it stay while scrolling */
 }
 
-
-
 /* SUCCESS LOGO */
-
-
-
-
-
 
 /* ========================== */
 /* SUCCESS PAGE               */
@@ -551,7 +541,6 @@ body {
   background-color: #336a4d;
 }
 
-
 /* ========================== */
 /* PAGE BACKGROUNDS BY CONTEXT */
 /* ========================== */
@@ -561,7 +550,7 @@ body.login-page {
 }
 
 body.landing-page {
-  background: url('../LandingPageBG.jpg') no-repeat center center;
+  background: url("../LandingPageBG.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
 }
