@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // ✅ Successful login
                 $_SESSION['user_id'] = $voter['id'];
                 $_SESSION['user_email'] = $voter['email'];
+                $_SESSION['user_type'] = 'voter'; // Set user type for redirection
                 header("Location: student/student_dashboard.php"); // Redirect after login
                 exit;
             } else {
@@ -32,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // ✅ Successful admin login
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['user_email'] = $admin['email'];
+                $_SESSION['user_type'] = 'admin'; // Set user type for redirection
                 header("Location: admin/admin_dashboard.php"); // redirect to main admin page
                 exit;
             } else {

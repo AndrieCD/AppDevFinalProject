@@ -22,7 +22,7 @@ validateSession();
     </div>
     <div class="nav-right">
       <a href="#" class="nav-link">Vote</a>
-      <a href="../index.php" class="nav-link">Logout</a>
+      <a href="../logout.php" class="nav-link">Logout</a>
     </div>
   </nav>
 
