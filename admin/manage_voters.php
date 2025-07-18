@@ -3,26 +3,31 @@ require_once '../utility/init.php';
 
 // Validate session to ensure user is logged in
 validateSession();
+?>
 
-// Initialize voters list if not set
-if (!isset($_SESSION['voters'])) {
-    $_SESSION['voters'] = [];
-}
+<?php
+    // Initialize voters list if not set
+    $voters = get_all_voters();
+    $_SESSION['voters'] = $voters;
 
-// Add voter
-if (isset($_POST['add_voter'])) {
-    $email = trim($_POST['voter_email']);
-    if (!empty($email)) {
-        $_SESSION['voters'][] = ['email' => $email, 'voted' => false];
+
+
+// Delete voter
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
+    $idToDelete = $_POST['delete_voter'];
+
+    if ($idToDelete) {
+        $deleted = delete_voter($id);
+        if ($deleted) {
+            $_SESSION['voters'] = get_all_voters();
+            header("Location: manage_voters.php");
+            exit();
+        } else {
+            $error = "Failed to delete voter.";
+        }
     }
 }
 
-// Delete voter
-if (isset($_POST['delete_voter'])) {
-    $index = $_POST['delete_voter'];
-    unset($_SESSION['voters'][$index]);
-    $_SESSION['voters'] = array_values($_SESSION['voters']);
-}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +90,7 @@ if (isset($_POST['delete_voter'])) {
                             <?php foreach ($_SESSION['voters'] as $index => $voter): ?>
                                 <tr>
                                     <td><?= htmlspecialchars($voter['email']) ?></td>
-                                    <td><?= $voter['voted'] ? 'Voted' : 'Not Voted' ?></td>
+                                    <td><?= $voter['has_voted'] ? 'Voted' : 'Not Voted' ?></td>
                                     <td>
                                         <button type="submit" name="delete_voter" value="<?= $index ?>" class="btn-delete">Delete</button>
                                     </td>
