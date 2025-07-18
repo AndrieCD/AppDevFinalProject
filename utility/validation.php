@@ -27,6 +27,12 @@
         $candidateNameFormat = "/^[A-Za-z]+(?: [A-Za-z]+)*$/";
         return preg_match($candidateNameFormat, $name);
     }
+
+    function validatePositionName($name) 
+    {
+        $positionNameFormat = "/^[A-Za-z]+(?: [A-Za-z]+)*$/";
+        return preg_match($positionNameFormat, $name);
+    }
     
     // Party Name validation.
     // The party name should 5 or more characters and only contain Upper and lowercase letters.

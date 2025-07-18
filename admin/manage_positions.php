@@ -15,13 +15,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
     $name = trim($_POST['position_name']);
 
     if (!empty($name)) {
-        $added = add_position($name);
-        if ($added) {
-            $_SESSION['positions'] = get_all_positions();
-            header("Location: manage_positions.php");
-            exit();
+        if (validatePositionName($name)) {
+            $existingPosition = get_position_id_by_name($name);
+            if ($existingPosition) {
+                $msg = "Position name already exists.";
+                // Optionally, you can redirect or handle this case differently
+            }
+            else {
+                $added = add_position($name);
+                if ($added) {
+                    $_SESSION['positions'] = get_all_positions();
+                    header("Location: manage_positions.php");
+                    exit();
+                } else {
+                    $msg = "Failed to add position.";
+                }
+            }
         } else {
-            $msg = "Failed to add position.";
+            $msg = "Invalid position name. It should contain only letters and spaces.";
         }
     } else {
         $msg = "Position name cannot be empty.";
