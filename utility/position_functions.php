@@ -38,3 +38,11 @@ function getPositionName($id) {
     $stmt->execute([':id' => $id]);
     return $stmt->fetchColumn();
 }
+
+// Get position ID by name
+function get_position_id_by_name($name) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT id FROM positions WHERE name = :name");
+    $stmt->execute([':name' => htmlspecialchars($name)]);
+    return $stmt->fetchColumn();
+}

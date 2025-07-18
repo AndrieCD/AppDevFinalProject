@@ -52,7 +52,6 @@ function get_all_parties_with_candidates() {
 }
 
 
-
 function delete_party($id) {
     global $pdo;
     // First delete candidates linked to party

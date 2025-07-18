@@ -35,3 +35,10 @@ function get_candidates_from_party($party_id) {
     $stmt->execute([':party_id' => $party_id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function get_candidate_id_by_name($name) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT id FROM candidates WHERE name = :name");
+    $stmt->execute([':name' => $name]);
+    return $stmt->fetchColumn();
+}

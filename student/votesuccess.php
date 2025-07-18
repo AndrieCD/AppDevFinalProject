@@ -22,7 +22,7 @@ validateSession();
     </div>
     <div class="nav-right">
       <a href="#" class="nav-link">Vote</a>
-      <a href="login.php" class="nav-link">Log-out</a>
+      <a href="../logout.php" class="nav-link">Logout</a>
     </div>
   </nav>
 
@@ -34,7 +34,7 @@ validateSession();
     </div>
     <div class="success-title">Successfully Voted!</div>
     <div class="success-message">Your vote has been successfully recorded.</div>
-    <button class="view-results-btn" onclick="alert('Live results will be available soon.')">
+    <button class="view-results-btn" onclick="window.location.href='live_results.php'">
       View Live Results
     </button>
   </div>

@@ -8,6 +8,37 @@ foreach (get_all_candidates() as $candidate) {
     $position = $candidate['position_name'];
     $candidates_by_position[$position][] = $candidate;
 }
+
+// Get all positions
+$positions = get_all_positions();
+
+// Check if the user has already voted
+$voter_id = $_SESSION['user_id'];
+if (hasVoterVoted($voter_id)) {
+    header("Location: votesuccess.php");
+    exit();
+}
+
+// If the user has not voted, proceed to display the voting page
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    foreach ($positions as $position) {
+        $position_name = $position['name'];
+        $position_id = $position['id'];
+
+        $input_name = strtolower(str_replace(' ', '_', $position_name));
+
+        if (isset($_POST[$input_name])) {
+            $candidate_id = $_POST[$input_name];
+            castVote($voter_id, $candidate_id, $position_id);
+        }
+    }
+
+    header("Location: votesuccess.php");
+    exit();
+}
+
+
+
 ?>
 
 
@@ -55,7 +86,7 @@ foreach (get_all_candidates() as $candidate) {
     </section>
 
     <!-- Voting Form -->
-    <form class="voting-form" method="POST" action="votesuccess.php">
+    <form class="voting-form" method="POST">
 
       <?php foreach ($candidates_by_position as $position => $candidates): ?>
         <div class="position-group">
