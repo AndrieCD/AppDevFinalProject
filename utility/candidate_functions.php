@@ -25,3 +25,13 @@ function delete_candidate($id) {
     $stmt = $pdo->prepare("DELETE FROM candidates WHERE id = :id");
     return $stmt->execute([':id' => $id]);
 }
+
+function get_candidates_from_party($party_id) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT c.id, c.name, pos.name AS position_name
+                           FROM candidates c
+                           JOIN positions pos ON c.position_id = pos.id
+                           WHERE c.party_id = :party_id");
+    $stmt->execute([':party_id' => $party_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

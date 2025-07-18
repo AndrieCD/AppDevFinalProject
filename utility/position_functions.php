@@ -31,3 +31,10 @@ function update_position($id, $newName) {
         'id' => $id
     ]);
 }
+
+function getPositionName($id) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT id FROM elections WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetchColumn();
+}

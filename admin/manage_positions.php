@@ -54,7 +54,7 @@ if (isset($_POST['delete_position'])) {
         <li><a href="manage_parties.php">Parties</a></li>
         <li><a href="manage_positions.php" class="active">Positions</a></li>
         <li><a href="manage_voters.php">Voters</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="../logout.php">Logout</a></li>
     </ul>
 </div>
 

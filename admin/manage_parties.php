@@ -3,57 +3,55 @@ require_once '../utility/init.php';
 
 // Validate session to ensure user is logged in
 validateSession();
+?>
 
-// // Sample positions (replace with DB-fetch if needed)
-// if (!isset($_SESSION['positions'])) {
-//     $_SESSION['positions'] = [
-//         ['id' => 1, 'name' => 'President'],
-//         ['id' => 2, 'name' => 'Vice President'],
-//         ['id' => 3, 'name' => 'Secretary'],
-//         ['id' => 4, 'name' => 'Treasurer']
-//     ];
-// }
+<?php
+    $parties = get_all_parties_with_candidates();
+    $_SESSION['parties'] = $parties;
 
-if (!isset($_SESSION['parties'])) {
-    $_SESSION['parties'] = [];
-}
+    if (!isset($_SESSION['positions'])) {
+        $_SESSION['positions'] = get_all_positions(); 
+    }
 
-// Add Party
-if (isset($_POST['add_party'])) {
-    $party = [
-        'name' => $_POST['party_name'],
-        'candidates' => []
-    ];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_party'])) {
+        $partyName = trim($_POST['party_name']);
+        $candidates = $_POST['candidate_name'] ?? [];
+        $positions = $_POST['candidate_position_id'] ?? [];
 
-    for ($i = 0; $i < count($_POST['candidate_name']); $i++) {
-        $name = trim($_POST['candidate_name'][$i]);
-        $positionId = $_POST['candidate_position_id'][$i];
+        // Validate party name
+        if (!validatePartyName($partyName)) {
+            $error = "Invalid party name. It should be at least 5 letters long and contain only letters.";
 
-        if (!empty($name) && !empty($positionId)) {
-            $party['candidates'][] = [
-                'name' => $name,
-                'position_id' => $positionId
-            ];
+            // check if party name already exists
+            $existingParty = get_party_id_by_name($partyName);
+            if ($existingParty) {
+                $error = "Party name already exists.";
+            } else {
+                $partyId = insert_party($partyName);
+                $_SESSION['parties'] = get_all_parties_with_candidates();
+                
+                foreach ($candidates as $index => $name) {
+                    if (!empty($name) && !empty($positions[$index])) {
+                        insert_candidate($name, $positions[$index], $partyId);
+                    }
+                }
+                
+                header("Location: manage_parties.php");
+                exit();
+            }
         }
     }
 
-    $_SESSION['parties'][] = $party;
-}
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_party'])) {
+        $partyId = $_POST['party_id'] ?? null;
 
-// Delete Party
-if (isset($_POST['delete_party'])) {
-    $index = $_POST['delete_index'];
-    unset($_SESSION['parties'][$index]);
-    $_SESSION['parties'] = array_values($_SESSION['parties']);
-}
-
-// Helper: Get position name by ID
-function getPositionName($id) {
-    foreach ($_SESSION['positions'] as $pos) {
-        if ($pos['id'] == $id) return $pos['name'];
+        if ($partyId) {
+            delete_party($partyId);
+            $_SESSION['parties'] = get_all_parties_with_candidates();
+            header("Location: manage_parties.php");
+            exit();
+        }
     }
-    return 'Unknown';
-}
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +106,7 @@ function getPositionName($id) {
         <li><a href="manage_parties.php">Parties</a></li>
         <li><a href="manage_positions.php">Positions</a></li>
         <li><a href="manage_voters.php">Voters</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="../logout.php">Logout</a></li>
     </ul>
 </div>
 
@@ -142,28 +140,31 @@ function getPositionName($id) {
 
     <!-- ======= PARTY LIST ======= -->
     <section class="Partycards">
-        <div class="existing-parties-container">
+        <div class="card existing-parties-container">
             <div class="existing-parties-title">
-                <h3>Existing Parties</h3>
+                <h1>Existing Parties</h1>
             </div>
             <div class="existing-parties-list">
-                <?php foreach ($_SESSION['parties'] as $index => $party): ?>
+
+                <!-- Display existing parties -->
+                <?php foreach ($parties as $party): ?>
                     <div class="card inner-party-card">
-                        <h3><?= htmlspecialchars($party['name']) ?></h3>
+                        <h3><?= htmlspecialchars($party['party_name']) ?></h3>
                         <ul style="text-align:left;">
                             <?php foreach ($party['candidates'] as $candidate): ?>
                                 <li>
-                                    <?= htmlspecialchars($candidate['name']) ?> -
-                                    <em><?= htmlspecialchars(getPositionName($candidate['position_id'])) ?></em>
+                                    <?= htmlspecialchars($candidate['candidate_name']) ?> -
+                                    <em><?= htmlspecialchars($candidate['position']) ?></em>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
                         <form method="POST" class="delete-form">
-                            <input type="hidden" name="delete_index" value="<?= $index ?>">
+                            <input type="hidden" name="party_id" value="<?= $party['party_id'] ?>">
                             <button type="submit" name="delete_party" class="deletepartyButton">Delete</button>
                         </form>
                     </div>
                 <?php endforeach; ?>
+
             </div>
         </div>
     </section>
