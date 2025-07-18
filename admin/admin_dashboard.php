@@ -25,7 +25,7 @@ validateSession();
         <span class="logo-text">admin</span>
     </div>
     <ul class="nav-links">
-        <li><a href="index.php">Dashboard</a></li>
+        <li><a href="admin_dashboard.php">Dashboard</a></li>
         <li><a href="manage_parties.php">Parties</a></li>
         <li><a href="manage_positions.php">Positions</a></li>
         <li><a href="manage_voters.php">Voters</a></li>
@@ -42,6 +42,42 @@ validateSession();
             <a href="manage_positions.php" class="IndexCard">Manage Positions</a>
             <a href="manage_voters.php" class="IndexCard">Manage Voters</a>
             </div>
+        </div>
+
+        <br>
+
+          <!-- Live Results -->
+        <div class="wrapper">
+        <!-- Display results here -->
+            <?php
+                $resultsRaw = getVoteResultsGroupedByPosition();
+
+                // Group results by position
+                $resultsByPosition = [];
+                foreach ($resultsRaw as $row) {
+                    $position = $row['position_name'];
+                    $resultsByPosition[$position][] = $row;
+                }
+            ?>
+            <?php if (empty($resultsByPosition)): ?>
+            <p>No votes yet.</p>
+            <?php else: ?>
+            <h2 style="text-align:center;">Live Election Results</h2>
+            <?php foreach ($resultsByPosition as $position => $candidates): ?>
+                <section class="position-results">
+                <h3><?= htmlspecialchars($position) ?></h3>
+                <div class="results-container">
+                    <?php foreach ($candidates as $candidate): ?>
+                    <div class="result-card">
+                        <h4><?= htmlspecialchars($candidate['candidate_name']) ?></h4>
+                        <p><strong>Party:</strong> <?= htmlspecialchars($candidate['party_name']) ?></p>
+                        <p><strong>Votes:</strong> <?= $candidate['vote_count'] ?></p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                </section>
+            <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </main>
 

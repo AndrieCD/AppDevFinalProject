@@ -102,7 +102,7 @@ validateSession();
         <span class="logo-text">admin</span>
     </div>
     <ul class="nav-links">
-        <li><a href="index.php">Dashboard</a></li>
+       <li><a href="admin_dashboard.php">Dashboard</a></li>
         <li><a href="manage_parties.php">Parties</a></li>
         <li><a href="manage_positions.php">Positions</a></li>
         <li><a href="manage_voters.php">Voters</a></li>
