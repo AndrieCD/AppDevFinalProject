@@ -36,5 +36,13 @@
         return preg_match($partyNameFormat, $party);
     }
 
+    function validateSession() 
+    {
+        if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_email'])) {
+            header("Location: ../index.php");
+            exit;
+        }
+    }
+
 ?>
 <!-- ========== Email, Password, Positions, Party name (like 5letters more, bawal numbers ganun), Candidate name (letters only) ========== -->

@@ -1,5 +1,8 @@
 <?php
-session_start();
+require_once '../utility/init.php';
+
+// Validate session to ensure user is logged in
+validateSession();
 
 // Initialize voters list if not set
 if (!isset($_SESSION['voters'])) {

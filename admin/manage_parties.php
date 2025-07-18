@@ -1,5 +1,8 @@
 <?php
-session_start();
+require_once '../utility/init.php';
+
+// Validate session to ensure user is logged in
+validateSession();
 
 // // Sample positions (replace with DB-fetch if needed)
 // if (!isset($_SESSION['positions'])) {

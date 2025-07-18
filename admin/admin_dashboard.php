@@ -1,12 +1,20 @@
 <!-- ========== INDEX ========== -->
 <!-- ========== HomePage/Landing Page after mag login ========== -->
 
+<?php
+require_once '../utility/init.php';
+
+// Validate session to ensure user is logged in
+validateSession();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <body>
 

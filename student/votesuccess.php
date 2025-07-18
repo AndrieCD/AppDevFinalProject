@@ -1,3 +1,10 @@
+<?php
+require_once '../utility/init.php';
+
+// Validate session to ensure user is logged in
+validateSession();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,10 @@
+<?php
+require_once '../utility/init.php';
+
+// Validate session to ensure user is logged in
+validateSession();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +22,7 @@
     </div>
     <div class="nav-right">
       <a href="#" class="nav-link">Vote</a>
-      <a href="index.php" class="nav-link">Log-out</a>
+      <a href="../index.php" class="nav-link">Logout</a>
     </div>
   </nav>
 
