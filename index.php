@@ -1,5 +1,5 @@
 <?php
-require_once '../utility/init.php';
+require_once 'utility/init.php';
 
 $msg = '';
 
@@ -70,15 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </fieldset>
         </form>
         <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
+        <p>Don't have an account yet? Send a <a href="https://www.feutech.edu.ph/about-us/offices/itso">ticket!</a></p>
       </div>
     </div>
 
     <!-- Right Panel: Logo & Branding -->
-<div class="login-image-panel">
-  <div class="image-overlay">
-    <img src="assets/LogInSide.png" alt="Philippines Map" class="map-overlay">
-  </div>
-</div>
+    <div class="login-image-panel">
+      <div class="image-overlay">
+        <img src="assets/LogInSide.png" alt="Philippines Map" class="map-overlay">
+      </div>
+    </div>
 
   </div>
 
