@@ -15,8 +15,7 @@
     </div>
     <div class="nav-right">
       <a href="#" class="nav-link">Vote</a>
-      <a href="login.php" class="nav-link">Log-out</a>
-
+      <a href="index.php" class="nav-link">Log-out</a>
     </div>
   </nav>
 
@@ -51,14 +50,12 @@
         <div class="candidate-grid">
           <label class="candidate-card">
             <input type="radio" name="president" value="1" required>
-            <img src="../assets/images/jane.jpg" alt="Naruto Uzumaki">
             <h5>Naruto Uzumaki</h5>
             <p>Party A</p>
           </label>
 
           <label class="candidate-card">
             <input type="radio" name="president" value="2">
-            <img src="../assets/images/john.jpg" alt="Sasuke Uchiha">
             <h5>Sasuke Uchiha</h5>
             <p>Party B</p>
           </label>
@@ -71,14 +68,12 @@
         <div class="candidate-grid">
           <label class="candidate-card">
             <input type="radio" name="vp" value="3" required>
-            <img src="../assets/images/emily.jpg" alt="Hinata">
             <h5>Hinata</h5>
             <p>Party A</p>
           </label>
 
           <label class="candidate-card">
             <input type="radio" name="vp" value="4">
-            <img src="../assets/images/mark.jpg" alt="Sakura">
             <h5>Sakura</h5>
             <p>Party B</p>
           </label>
@@ -91,14 +86,12 @@
         <div class="candidate-grid">
           <label class="candidate-card">
             <input type="radio" name="secretary" value="5" required>
-            <img src="../assets/images/alex.jpg" alt="Shikamaru">
             <h5>Shikamaru</h5>
             <p>Party C</p>
           </label>
 
           <label class="candidate-card">
             <input type="radio" name="secretary" value="6">
-            <img src="../assets/images/dana.jpg" alt="Shikadai">
             <h5>Shikadai</h5>
             <p>Party D</p>
           </label>

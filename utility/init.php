@@ -10,4 +10,5 @@ require_once 'validation.php';
 require_once 'candidate_functions.php';
 require_once 'party_functions.php';
 require_once 'voting_functions.php';
+require_once 'position_functions.php';
 ?>

@@ -1,6 +1,8 @@
 <?php
-session_start();
-require_once '../utility/init.php';
+// require_once '../utility/init.php';
+require_once '../utility/voter_functions.php';
+require_once '../utility/validation.php';
+require_once '../utility/admin_functions.php';
 
 $msg = '';
 
@@ -14,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $voter = getVoterByEmail($email);
         // also check if admin is logging in
         $admin = getAdminByEmail($email);
-        if (!$voter || !$admin) {
+        if (!$voter && !$admin) {
             $msg = "❌ Email not found.";
         } else {
             // check voter password
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // ✅ Successful login
                 $_SESSION['voter_id'] = $voter['id'];
                 $_SESSION['voter_email'] = $voter['email'];
-                header("Location: voter_dashboard.php"); // Redirect after login
+                header("Location: voting_page.php"); // Redirect after login
                 exit;
             } else {
                 $msg = "❌ Incorrect password.";
@@ -58,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Left Panel: Login Form -->
     <div class="login-form-panel">
       <div class="form-container">
-        <h1>Welcome back!</h1>
-        <p class="subtitle">Kindly put your Email and password</p>
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Enter Your Email and Password</p>
 
         <!-- Login Form -->
         <form  method="POST">
@@ -69,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Login</button>
           </fieldset>
         </form>
-
+        <?php if (!empty($msg)) echo "<p>$msg</p>"; ?>
       </div>
     </div>
 
