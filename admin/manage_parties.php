@@ -6,6 +6,8 @@ validateSession();
 ?>
 
 <?php
+    $msg = '';
+
     $parties = get_all_parties_with_candidates();
     $_SESSION['parties'] = $parties;
 
@@ -20,12 +22,12 @@ validateSession();
 
         // Validate party name
         if (!validatePartyName($partyName)) {
-            $error = "Invalid party name. It should be at least 5 letters long and contain only letters.";
-
+            $msg = "Invalid party name. It should be at least 5 letters long and contain only letters.";
+        } else {
             // check if party name already exists
             $existingParty = get_party_id_by_name($partyName);
             if ($existingParty) {
-                $error = "Party name already exists.";
+                $msg = "Party name already exists.";
             } else {
                 $partyId = insert_party($partyName);
                 $_SESSION['parties'] = get_all_parties_with_candidates();
@@ -60,6 +62,7 @@ validateSession();
     <meta charset="UTF-8">
     <title>Manage Parties</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <script>
         const positions = <?= json_encode($_SESSION['positions']) ?>;
         let candidateCount = 0;
@@ -136,6 +139,7 @@ validateSession();
                 <button type="submit" name="add_party" class="submit-btn-inline">Add Party</button>
             </div>
         </form>
+        <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
     </section>
 
     <!-- ======= PARTY LIST ======= -->

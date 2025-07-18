@@ -31,6 +31,7 @@ if (isset($_POST['delete_voter'])) {
     <meta charset="UTF-8">
     <title>Manage Voters</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 

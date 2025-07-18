@@ -65,12 +65,12 @@ validateSession();
             <h2 style="text-align:center;">Live Election Results</h2>
             <?php foreach ($resultsByPosition as $position => $candidates): ?>
                 <section class="position-results">
-                <h3><?= htmlspecialchars($position) ?></h3>
+                <h3><?= ucwords(htmlspecialchars($position)) ?></h3>
                 <div class="results-container">
                     <?php foreach ($candidates as $candidate): ?>
                     <div class="result-card">
-                        <h4><?= htmlspecialchars($candidate['candidate_name']) ?></h4>
-                        <p><strong>Party:</strong> <?= htmlspecialchars($candidate['party_name']) ?></p>
+                        <h4><?= ucwords(htmlspecialchars($candidate['candidate_name'])) ?></h4>
+                        <p><strong>Party:</strong> <?= ucwords(htmlspecialchars($candidate['party_name'])) ?></p>
                         <p><strong>Votes:</strong> <?= $candidate['vote_count'] ?></p>
                     </div>
                     <?php endforeach; ?>

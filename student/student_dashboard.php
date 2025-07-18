@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Voting Page</title>
   <link rel="stylesheet" href="../assets/css/student.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <body>
 
@@ -90,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <?php foreach ($candidates_by_position as $position => $candidates): ?>
         <div class="position-group">
-            <h4><?= htmlspecialchars($position) ?></h4>
+            <h4><?= ucwords(htmlspecialchars($position)) ?></h4>
             <div class="candidate-grid">
                 <?php foreach ($candidates as $candidate): ?>
                     <label class="candidate-card">
@@ -98,8 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="<?= strtolower(str_replace(' ', '_', $position)) ?>" 
                                value="<?= $candidate['id'] ?>" 
                                required>
-                        <h5><?= htmlspecialchars($candidate['name']) ?></h5>
-                        <p><?= htmlspecialchars($candidate['party_name']) ?></p>
+                        <h5><?= ucwords(htmlspecialchars($candidate['name'])) ?></h5>
+                        <p><?= ucwords(htmlspecialchars($candidate['party_name'])) ?></p>
                     </label>
                 <?php endforeach; ?>
             </div>

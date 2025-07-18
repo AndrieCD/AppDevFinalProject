@@ -8,7 +8,7 @@ validateSession();
 <?php
     $positions = get_all_positions();
     $_SESSION['positions'] = $positions;
-
+    $msg = '';
 
 // Add Position
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
             header("Location: manage_positions.php");
             exit();
         } else {
-            $error = "Failed to add position.";
+            $msg = "Failed to add position.";
         }
     } else {
-        $error = "Position name cannot be empty.";
+        $msg = "Position name cannot be empty.";
     }
 }
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
             header("Location: manage_positions.php");
             exit();
         } else {
-            $error = "Failed to delete position.";
+            $msg = "Failed to delete position.";
         }
     }
 }
@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
     <meta charset="UTF-8">
     <title>Manage Positions</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 
@@ -82,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
             </div>
             <button type="submit" name="add_position" class="btn-primary">Add Position</button>
         </form>
+        <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
     </section>
 
     <!-- Existing Positions -->

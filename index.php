@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // check voter password
             if ($voter && password_verify($password, $voter['password'])) {
-                // ✅ Successful login
+                // Successful user login
                 $_SESSION['user_id'] = $voter['id'];
                 $_SESSION['user_email'] = $voter['email'];
                 $_SESSION['user_type'] = 'voter'; // Set user type for redirection
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // check admin password
             if ($admin && password_verify($password, $admin['password'])) {
-                // ✅ Successful admin login
+                // Successful admin login
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['user_email'] = $admin['email'];
                 $_SESSION['user_type'] = 'admin'; // Set user type for redirection
