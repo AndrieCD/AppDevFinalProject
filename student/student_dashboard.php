@@ -1,9 +1,15 @@
 <?php
 require_once '../utility/init.php';
-
-// Validate session to ensure user is logged in
 validateSession();
+
+// Group candidates by position
+$candidates_by_position = [];
+foreach (get_all_candidates() as $candidate) {
+    $position = $candidate['position_name'];
+    $candidates_by_position[$position][] = $candidate;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +34,7 @@ validateSession();
 
   <!-- Welcome Banner (outside green nav) -->
   <div class="welcome-banner">
-    <h2>Welcome, Student Name!</h2>
+    <h2>Welcome!</h2>
   </div>
 
   <!-- Splash Screen -->
@@ -51,59 +57,23 @@ validateSession();
     <!-- Voting Form -->
     <form class="voting-form" method="POST" action="votesuccess.php">
 
-      <!-- PRESIDENT -->
-      <div class="position-group">
-        <h4>President</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="president" value="1" required>
-            <h5>Naruto Uzumaki</h5>
-            <p>Party A</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="president" value="2">
-            <h5>Sasuke Uchiha</h5>
-            <p>Party B</p>
-          </label>
+      <?php foreach ($candidates_by_position as $position => $candidates): ?>
+        <div class="position-group">
+            <h4><?= htmlspecialchars($position) ?></h4>
+            <div class="candidate-grid">
+                <?php foreach ($candidates as $candidate): ?>
+                    <label class="candidate-card">
+                        <input type="radio" 
+                               name="<?= strtolower(str_replace(' ', '_', $position)) ?>" 
+                               value="<?= $candidate['id'] ?>" 
+                               required>
+                        <h5><?= htmlspecialchars($candidate['name']) ?></h5>
+                        <p><?= htmlspecialchars($candidate['party_name']) ?></p>
+                    </label>
+                <?php endforeach; ?>
+            </div>
         </div>
-      </div>
-
-      <!-- VICE PRESIDENT -->
-      <div class="position-group">
-        <h4>Vice President</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="vp" value="3" required>
-            <h5>Hinata</h5>
-            <p>Party A</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="vp" value="4">
-            <h5>Sakura</h5>
-            <p>Party B</p>
-          </label>
-        </div>
-      </div>
-
-      <!-- SECRETARY -->
-      <div class="position-group">
-        <h4>Secretary</h4>
-        <div class="candidate-grid">
-          <label class="candidate-card">
-            <input type="radio" name="secretary" value="5" required>
-            <h5>Shikamaru</h5>
-            <p>Party C</p>
-          </label>
-
-          <label class="candidate-card">
-            <input type="radio" name="secretary" value="6">
-            <h5>Shikadai</h5>
-            <p>Party D</p>
-          </label>
-        </div>
-      </div>
+    <?php endforeach; ?>
 
       <!-- Submit Button -->
       <button type="submit" class="vote-now-btn">Submit Vote</button>

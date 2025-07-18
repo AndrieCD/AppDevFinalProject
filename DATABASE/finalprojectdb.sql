@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2025 at 05:02 PM
+-- Generation Time: Jul 18, 2025 at 10:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,7 +38,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `email`, `password`) VALUES
-(1, 'andrieCD02@gmail.com', '$2y$10$/AaL3Cj.msSe0ZpPj6uaPuBVpcSYI.qiJowQwB0ro82cwA/T3fI0C');
+(1, 'andrieCD02@gmail.com', '$2y$10$/AaL3Cj.msSe0ZpPj6uaPuBVpcSYI.qiJowQwB0ro82cwA/T3fI0C'),
+(2, 'admin@admin.com', '$2y$10$tJOJYxg.anKdmnuIABRTXeoi.eVHs7GxPVVkkl8zYgu9oiSNESuhC');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,18 @@ CREATE TABLE `candidates` (
   `party_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `name`, `position_id`, `party_id`) VALUES
+(3, 'Angel Fabregas', 1, 4),
+(4, 'Leonabel Alcantara', 2, 4),
+(5, 'Angelito Regero', 3, 4),
+(6, 'Heniarose Guansing', 1, 5),
+(7, 'Andrie Detera', 2, 5),
+(8, 'Leornardo Alcantara', 3, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +76,14 @@ CREATE TABLE `elections` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `elections`
+--
+
+INSERT INTO `elections` (`id`, `name`) VALUES
+(4, 'Angel\'s Burger'),
+(5, 'Henia\'s Roses');
 
 -- --------------------------------------------------------
 
@@ -174,19 +195,19 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `candidates`
 --
 ALTER TABLE `candidates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `elections`
 --
 ALTER TABLE `elections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `positions`

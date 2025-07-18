@@ -18,7 +18,7 @@ function castVote($voter_id, $candidate_id) {
     }
 
     // Insert vote
-    $stmt = $pdo->prepare("INSERT INTO votes (voter_id, candidate_id, timestamp) VALUES (?, ?, NOW())");
+    $stmt = $pdo->prepare("INSERT INTO votes (voter_id, candidate_id) VALUES (?, ?)");
     $voteSuccess = $stmt->execute([$voter_id, $candidate_id]);
 
     if ($voteSuccess) {

@@ -15,7 +15,7 @@ function get_all_candidates() {
     global $pdo;
     $stmt = $pdo->query("SELECT c.id, c.name, p.name AS party_name, pos.name AS position_name
                          FROM candidates c
-                         JOIN partylists p ON c.party_id = p.id
+                         JOIN elections p ON c.party_id = p.id
                          JOIN positions pos ON c.position_id = pos.id");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
