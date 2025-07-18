@@ -1,8 +1,6 @@
 <?php
-/*
 session_start();
-require_once '../utility/voter_functions.php'; // Adjust path as needed
-require_once '../utility/validation.php';      // Adjust path as needed
+require_once '../utility/init.php';
 
 $msg = '';
 
@@ -43,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-*/
 ?>
 
 <!DOCTYPE html>
@@ -65,10 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="subtitle">Kindly put your Email and password</p>
 
         <!-- Login Form -->
-        <form action="login.php" method="POST">
+        <form  method="POST">
+          <fieldset>      
             <input type="text" name="email" placeholder="Email" required />
-          <input type="password" name="password" placeholder="Password" required />
-          <button type="submit">Login</button>
+            <input type="password" name="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </fieldset>
         </form>
 
       </div>
