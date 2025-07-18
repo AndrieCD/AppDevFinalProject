@@ -1,18 +1,47 @@
-<!-- ========== POSITIONS ========== -->
+<?php
+session_start();
 
-<!-- ========== ilalagay ang valid positions for the election (president/vp/secre) ========== -->
+// // Initialize positions
+// if (!isset($_SESSION['positions'])) {
+//     $_SESSION['positions'] = [
+//         ['id' => 1, 'name' => 'President'],
+//         ['id' => 2, 'name' => 'Vice President'],
+//         ['id' => 3, 'name' => 'Secretary'],
+//         ['id' => 4, 'name' => 'Treasurer']
+//     ];
+// }
+
+// Add Position
+if (isset($_POST['add_position'])) {
+    $name = trim($_POST['position_name']);
+    if (!empty($name)) {
+        $newId = count($_SESSION['positions']) > 0 
+            ? max(array_column($_SESSION['positions'], 'id')) + 1 
+            : 1;
+        $_SESSION['positions'][] = ['id' => $newId, 'name' => $name];
+    }
+}
+
+// Delete Position
+if (isset($_POST['delete_position'])) {
+    $idToDelete = $_POST['position_id'];
+    $_SESSION['positions'] = array_filter($_SESSION['positions'], function ($pos) use ($idToDelete) {
+        return $pos['id'] != $idToDelete;
+    });
+    $_SESSION['positions'] = array_values($_SESSION['positions']); // reindex
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>Manage Positions</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
+<div class="navbar">
     <div class="logo">
         <img src="../assets/bobotoIcon.png" alt="Logo" class="logo-img">
         <span class="logo-text">admin</span>
@@ -20,25 +49,45 @@
     <ul class="nav-links">
         <li><a href="index.php">Dashboard</a></li>
         <li><a href="manage_parties.php">Parties</a></li>
-        <li><a href="manage_positions.php">Positions</a></li>
+        <li><a href="manage_positions.php" class="active">Positions</a></li>
         <li><a href="manage_voters.php">Voters</a></li>
-        <li><a href="login.php">Logout</a></li>
+        <li><a href="#">Logout</a></li>
     </ul>
-    </div>
+</div>
 
-    <!-- Main Dashboard Content -->
-    <main class="PositionManager">
-        <h1>Manage Positions</h1>
-        
-        <!-- ======= Position Entry ======= -->
-        <section class="position-form">
-            <form method="POST" class="cardPos">
-                <h3>Add New Position</h3>
-                
-            </form>
-        </section>
+<main class="position-manager">
+    <h1>Manage Positions</h1>
 
-    </main>
+    <!-- Add Position -->
+    <section class="position-form">
+        <form method="POST" class="position-card">
+            <h2>Add New Position</h2>
+            <div class="form-group">
+                <label for="position_name" class="form-label">Position Name</label>
+                <input type="text" name="position_name" id="position_name" required>
+            </div>
+            <button type="submit" name="add_position" class="btn-primary">Add Position</button>
+        </form>
+    </section>
+
+    <!-- Existing Positions -->
+    <section class="position-list">
+        <div class="position-card">
+            <h2>Existing Positions</h2>
+            <ul class="position-ul">
+                <?php foreach ($_SESSION['positions'] as $pos): ?>
+                    <li class="position-item">
+                        <span><?= htmlspecialchars($pos['name']) ?></span>
+                        <form method="POST" class="delete-form">
+                            <input type="hidden" name="position_id" value="<?= $pos['id'] ?>">
+                            <button type="submit" name="delete_position" class="btn-delete">Delete</button>
+                        </form>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </section>
+</main>
 
 </body>
 </html>
