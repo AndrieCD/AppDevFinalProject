@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../assets/css/student.css" />
   <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
-<body>
+<body class="landing-page">
 
   <!-- Top Navigation Bar -->
   <nav class="top-nav">

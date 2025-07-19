@@ -13,7 +13,7 @@ validateSession();
   <title>Vote Success</title>
   <link rel="stylesheet" href="../assets/css/student.css" />
 </head>
-<body>
+<body class="landing-page">
 
   <!-- Top Navigation -->
   <nav class="top-nav">
