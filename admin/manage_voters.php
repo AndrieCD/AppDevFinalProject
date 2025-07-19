@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
     $idToDelete = $_POST['delete_voter'] ?? null;
 
     if ($idToDelete) {
-        $deleted = delete_voter($id);
+        $deleted = delete_voter($idToDelete);
         if ($deleted) {
             $_SESSION['voters'] = get_all_voters();
             header("Location: manage_voters.php");
@@ -59,17 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
 <main class="PartyManager">
     <h1>Manage Voters</h1>
 
-    <!-- ======= ADD VOTER ======= -->
-    <section class="AddPartySection">
-        <div class="add-voter-card">
-            <h2>Add New Voter</h2>
-            <form method="POST" class="voter-form">
-                <input type="email" name="voter_email" required placeholder="Enter voter email" class="voter-input">
-                <button type="submit" name="add_voter" class="btn-add-voter">Add Voter</button>
-            </form>
-        </div>
-    </section>
-
     <!-- ======= VOTER LIST ======= -->
     <section class="Partycards">
         <div class="card existing-parties-container">
@@ -92,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
                                     <td><?= htmlspecialchars($voter['email']) ?></td>
                                     <td><?= $voter['has_voted'] ? 'Voted' : 'Not Voted' ?></td>
                                     <td>
-                                        <button type="submit" name="delete_voter" value="<?= $index ?>" class="btn-delete">Delete</button>
+                                        <button type="submit" name="delete_voter" value="<?= $voter['id'] ?>" class="btn-delete">Delete</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -105,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
                     </table>
                 </form>
             </div>
-        </div>
+        </div> 
     </section>
 </main>
 
