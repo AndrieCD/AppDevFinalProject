@@ -14,7 +14,7 @@ validateSession();
 
 // Delete voter
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
-    $idToDelete = $_POST['delete_voter'];
+    $idToDelete = $_POST['delete_voter'] ?? null;
 
     if ($idToDelete) {
         $deleted = delete_voter($id);
