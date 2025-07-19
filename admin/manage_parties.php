@@ -120,7 +120,7 @@ validateSession();
     <!-- ======= PARTY FORM ======= -->
     <section class="party-form">
         <form method="POST" class="cardParty">
-            <h3>Add New Party</h3>
+            <h2>Add New Party</h2>
 
             <div class="form-group">
                 <label class="form-label">Party Name</label>
@@ -144,7 +144,7 @@ validateSession();
 
     <!-- ======= PARTY LIST ======= -->
     <section class="Partycards">
-        <div class="card existing-parties-container">
+        <div class="existing-parties-container">
             <div class="existing-parties-title">
                 <h1>Existing Parties</h1>
             </div>
