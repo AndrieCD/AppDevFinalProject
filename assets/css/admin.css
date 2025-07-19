@@ -74,7 +74,30 @@ body {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease;
 }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #d1ffd6; /* soft highlight on hover */
+}
+
+
 
 .logo-img {
   height: 50px;
@@ -411,4 +434,49 @@ body {
   margin-bottom: 20px;
   font-size: 24px;
   color: white;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar {
+  animation: slideDown 0.6s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard h1 {
+  animation: fadeSlideIn 0.8s ease-out forwards;
+}
+
+@keyframes titleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animated-title {
+  animation: titleEntrance 0.6s ease-out forwards;
 }

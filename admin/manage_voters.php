@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
 
 <!-- ======= MAIN CONTENT ======= -->
 <main class="PartyManager">
-    <h1>Manage Voters</h1>
+    <h1 class="animated-title">Manage Voters</h1>
 
     <!-- ======= VOTER LIST ======= -->
     <section class="Partycards">

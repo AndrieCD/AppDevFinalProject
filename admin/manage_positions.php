@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
 </div>
 
 <main class="position-manager">
-    <h1>Manage Positions</h1>
+    <h1 class="animated-title">Manage Voters</h1>
 
     <!-- Add Position -->
     <section class="position-form">

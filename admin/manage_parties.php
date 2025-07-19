@@ -115,7 +115,8 @@ validateSession();
 
 <!-- ======= MAIN CONTENT ======= -->
 <main class="PartyManager">
-    <h1>Manage Parties</h1>
+    <h1 class="animated-title">Manage Parties</h1>
+
 
     <!-- ======= PARTY FORM ======= -->
     <section class="party-form">
