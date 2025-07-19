@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
 
     <!-- ======= ADD VOTER ======= -->
     <section class="AddPartySection">
-        <div class="card add-party-card">
+        <div class="add-voter-card">
             <h2>Add New Voter</h2>
             <form method="POST" class="voter-form">
                 <input type="email" name="voter_email" required placeholder="Enter voter email" class="voter-input">
