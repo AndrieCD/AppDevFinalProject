@@ -1,8 +1,19 @@
 body {
   font-family: Arial;
   margin: 0;
-  background-color: #202226;
   color: white;
+  background-color: #202226;
+  background-image: url('../adminbg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: auto; /* allow scrolling */
+}
+
+/* Hide scrollbar in Webkit browsers */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* DASHBOARD */
