@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Successful user login
                 $_SESSION['user_id'] = $voter['id'];
                 $_SESSION['user_email'] = $voter['email'];
-                $_SESSION['user_type'] = 'voter'; // Set user type for redirection
-                header("Location: student/student_dashboard.php"); // Redirect after login
+                $_SESSION['user_type'] = 'voter'; // user type for redirection
+                header("Location: student/student_dashboard.php"); // redirect after login
                 exit;
             } else {
                 $msg = "Incorrect password.";
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Successful admin login
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['user_email'] = $admin['email'];
-                $_SESSION['user_type'] = 'admin'; // Set user type for redirection
-                header("Location: admin/admin_dashboard.php"); // redirect to main admin page
+                $_SESSION['user_type'] = 'admin'; 
+                header("Location: admin/admin_dashboard.php");
                 exit;
             } else {
                 $msg = "Incorrect password.";

@@ -22,30 +22,52 @@ validateSession();
 
         // Validate party name
         if (!validatePartyName($partyName)) {
-            $msg = "Invalid party name. It should be at least 5 letters long and contain only letters.";
+            $msg = "Invalid party name. It should be at least 5 letters long and contains letters or apostrophes.";
         } else {
             // check if party name already exists
             $existingParty = get_party_id_by_name($partyName);
             if ($existingParty) {
                 $msg = "Party name already exists.";
             } else {
-                $partyId = insert_party($partyName);
-                $_SESSION['parties'] = get_all_parties_with_candidates();
                 
-                foreach ($candidates as $index => $name) {
-                    if (!empty($name) && !empty($positions[$index])) {
-                        insert_candidate($name, $positions[$index], $partyId);
+                
+                // check for duplicate positions
+                $usedPositions = [];
+
+                $hasDuplicatePosition = false;
+                foreach ($positions as $index => $posId) {
+                    if (in_array($posId, $usedPositions)) {
+                        $hasDuplicatePosition = true;
+                        break;
                     }
+                    $usedPositions[] = $posId;
                 }
-                
+
+                if ($hasDuplicatePosition) {
+                    $msg = "Cannot assign the same position to multiple candidates in the same party.";
+                } else {
+                    // if all validations pass, insert the party and candidates
+                    foreach ($candidates as $index => $name) {
+                        if (!empty($name) && !empty($positions[$index])) {
+                            insert_candidate($name, $positions[$index], $partyId);
+                        }
+                    }
+
+                    $partyId = insert_party($partyName);
+                    $_SESSION['parties'] = get_all_parties_with_candidates();
+
+                // reset page
                 header("Location: manage_parties.php");
                 exit();
+                }
             }
         }
     }
 
+
+    // deleting existing parties
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_party'])) {
-        $partyId = $_POST['party_id'] ?? null;
+        $partyId = $_POST['party_id'];
 
         if ($partyId) {
             delete_party($partyId);
@@ -138,8 +160,8 @@ validateSession();
             <div class="addPartyButton">
                 <button type="submit" name="add_party" class="submit-btn-inline">Add Party</button>
             </div>
+            <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
         </form>
-        <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
     </section>
 
     <!-- ======= PARTY LIST ======= -->
@@ -175,7 +197,7 @@ validateSession();
 </main>
 
 <script>
-    // Add one candidate field by default
+    // add one candidate field on load
     window.onload = () => {
         addCandidate();
     };

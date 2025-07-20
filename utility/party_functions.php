@@ -39,7 +39,8 @@ function get_all_parties_with_candidates() {
             ];
         }
 
-        if (!empty($row['candidate_id'])) { // avoid null candidates
+        // avoid null candidates
+        if (!empty($row['candidate_id'])) {
             $parties[$partyId]['candidates'][] = [
                 'candidate_id' => $row['candidate_id'],
                 'candidate_name' => $row['candidate_name'],
@@ -54,10 +55,10 @@ function get_all_parties_with_candidates() {
 
 function delete_party($id) {
     global $pdo;
-    // First delete candidates linked to party
+    // delete candidates
     $pdo->prepare("DELETE FROM candidates WHERE party_id = :id")->execute([':id' => $id]);
 
-    // Then delete the party
+    // delete the party
     $stmt = $pdo->prepare("DELETE FROM elections WHERE id = :id");
     return $stmt->execute([':id' => $id]);
 }

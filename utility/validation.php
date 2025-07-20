@@ -38,7 +38,7 @@
     // The party name should 5 or more characters and only contain Upper and lowercase letters.
     function validatePartyName($party) 
     {
-        $partyNameFormat = "/^[A-Za-z ]{5,}$/"; 
+        $partyNameFormat = "/^[A-Za-z ']{5,}$/"; 
         return preg_match($partyNameFormat, $party);
     }
 

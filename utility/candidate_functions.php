@@ -1,6 +1,8 @@
 <?php
 require_once 'db_connect.php';
 
+// functions to manage candidates
+
 function insert_candidate($name, $position_id, $party_id) {
     global $pdo;
     $stmt = $pdo->prepare("INSERT INTO candidates (name, position_id, party_id) VALUES (:name, :position_id, :party_id)");

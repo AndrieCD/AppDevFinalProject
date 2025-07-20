@@ -416,7 +416,7 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Welcome Banner */
+/* Welcome baner */
 .welcome-banner {
   text-align: center;
   padding: 20px;
@@ -470,16 +470,15 @@ button:hover {
   background-color: #336a4d;
 }
 
-/* Optional background overlay */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
   background: url("../LandingPageBG.jpg") no-repeat center center;
   background-size: cover;
-  background-attachment: fixed; /* optional: makes it stay while scrolling */
+  background-attachment: fixed;
 }
 
-/* SUCCESS LOGO */
+/* SUCCESS LOGo */
 
 /* ========================== */
 /* SUCCESS PAGE               */
@@ -533,10 +532,6 @@ body {
 .view-results-btn:hover {
   background-color: #336a4d;
 }
-
-/* ========================== */
-/* PAGE BACKGROUNDS BY CONTEXT */
-/* ========================== */
 
 body.login-page {
   background-color: #1e1f22;
