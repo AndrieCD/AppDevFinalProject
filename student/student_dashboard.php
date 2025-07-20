@@ -19,7 +19,24 @@ if (hasVoterVoted($voter_id)) {
     exit();
 }
 
-// If the user has not voted, proceed to display the voting page
+
+// apply default sort for pres and vp
+$ordered_positions = [];
+
+if (isset($candidates_by_position['President'])) {
+    $ordered_positions['President'] = $candidates_by_position['President'];
+}
+if (isset($candidates_by_position['Vice President'])) {
+    $ordered_positions['Vice President'] = $candidates_by_position['Vice President'];
+}
+
+foreach ($candidates_by_position as $position => $candidates) {
+    if (!isset($ordered_positions[$position])) {
+        $ordered_positions[$position] = $candidates;
+    }
+}
+
+// If the user has not voted,  display the voting page
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($positions as $position) {
         $position_name = $position['name'];
@@ -59,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <img src="../assets/BobotoLogo.png" alt="BOBOTO Logo" class="nav-logo">
     </div>
     <div class="nav-right">
-      <a href="#" class="nav-link">Vote</a>
+      <a href="student_dashboard.php" class="nav-link">Vote</a>
       <a href="../logout.php" class="nav-link">Logout</a>
     </div>
   </nav>
@@ -89,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Voting Form -->
     <form class="voting-form" method="POST">
 
-      <?php foreach ($candidates_by_position as $position => $candidates): ?>
+      <?php foreach ($ordered_positions as $position => $candidates): ?>
         <div class="position-group">
             <h4><?= ucwords(htmlspecialchars($position)) ?></h4>
             <div class="candidate-grid">

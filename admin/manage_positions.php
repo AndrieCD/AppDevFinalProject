@@ -10,7 +10,7 @@ validateSession();
     $_SESSION['positions'] = $positions;
     $msg = '';
 
-// Add Position
+// add Position
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
     $name = trim($_POST['position_name']);
 
@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
             $existingPosition = get_position_id_by_name($name);
             if ($existingPosition) {
                 $msg = "Position name already exists.";
-                // Optionally, you can redirect or handle this case differently
             }
             else {
                 $added = add_position($name);
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_position'])) {
 
 // Delete Position
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
-    $idToDelete = $_POST['position_id'] ?? null;
+    $idToDelete = $_POST['position_id'];
 
     if ($idToDelete) {
         $deleted = delete_position($idToDelete);
@@ -93,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_position'])) {
                 <input type="text" name="position_name" id="position_name" required>
             </div>
             <button type="submit" name="add_position" class="btn-primary">Add Position</button>
+            <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
         </form>
-        <?php if (!empty($msg)) echo "<p class='error-message'>$msg</p>"; ?>
     </section>
 
     <!-- Existing Positions -->

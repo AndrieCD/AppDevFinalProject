@@ -20,10 +20,6 @@ function castVote($voter_id, $candidate_id, $position_id) {
         // Update voter's status
         $updateStmt = $pdo->prepare("UPDATE users SET has_voted = 1 WHERE id = ?");
         $updateStmt->execute([$voter_id]);
-
-        return ['success' => true, 'message' => '✅ Vote successfully cast.'];
-    } else {
-        return ['success' => false, 'message' => '❌ Failed to cast vote. Please try again.'];
     }
 }
 

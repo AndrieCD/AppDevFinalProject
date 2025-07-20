@@ -21,7 +21,7 @@ validateSession();
 <img src="../assets/BobotoLogo.png"alt="BOBOTO Logo" class="nav-logo">
     </div>
     <div class="nav-right">
-      <a href="#" class="nav-link">Vote</a>
+      <a href="student_dashboard.php" class="nav-link">Vote</a>
       <a href="../logout.php" class="nav-link">Logout</a>
     </div>
   </nav>
@@ -34,9 +34,9 @@ validateSession();
     </div>
     <div class="success-title">Successfully Voted!</div>
     <div class="success-message">Your vote has been successfully recorded.</div>
-    <button class="view-results-btn" onclick="window.location.href='live_results.php'">
+    <!-- <button class="view-results-btn" onclick="window.location.href='live_results.php'">
       View Live Results
-    </button>
+    </button> -->
   </div>
 </div>
 

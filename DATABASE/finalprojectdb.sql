@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2025 at 10:05 AM
+-- Generation Time: Jul 20, 2025 at 08:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -59,12 +59,19 @@ CREATE TABLE `candidates` (
 --
 
 INSERT INTO `candidates` (`id`, `name`, `position_id`, `party_id`) VALUES
-(3, 'Angel Fabregas', 1, 4),
-(4, 'Leonabel Alcantara', 2, 4),
-(5, 'Angelito Regero', 3, 4),
-(6, 'Heniarose Guansing', 1, 5),
-(7, 'Andrie Detera', 2, 5),
-(8, 'Leornardo Alcantara', 3, 5);
+(14, 'Heniarose Guansing', 1, 9),
+(15, 'Crishia Valeria', 2, 9),
+(16, 'Crishiarose Cunanan', 3, 9),
+(17, 'Cricel Guansing', 4, 9),
+(18, 'Angel Fabregas', 1, 10),
+(19, 'Janica Caras', 2, 10),
+(20, 'Angelica Rolloque', 3, 10),
+(21, 'Aleta Fabregas', 4, 10),
+(22, 'Leonabel Alcantara', 1, 11),
+(23, 'Leonard Alcantara', 2, 11),
+(24, 'Leor Alcantara', 3, 11),
+(25, 'Leonardo Alcantara', 4, 11),
+(26, 'Andrie Detera', 2, 12);
 
 -- --------------------------------------------------------
 
@@ -82,8 +89,10 @@ CREATE TABLE `elections` (
 --
 
 INSERT INTO `elections` (`id`, `name`) VALUES
-(4, 'Angel\'s Burger'),
-(5, 'Henia\'s Roses');
+(12, 'Alliance of Information Technology Students'),
+(10, 'Angel\'s Burger'),
+(9, 'Henia\'s Roses'),
+(11, 'The Alcantaras');
 
 -- --------------------------------------------------------
 
@@ -103,6 +112,7 @@ CREATE TABLE `positions` (
 INSERT INTO `positions` (`id`, `name`) VALUES
 (1, 'President'),
 (3, 'Secretary'),
+(4, 'Treasurer'),
 (2, 'Vice President');
 
 -- --------------------------------------------------------
@@ -125,7 +135,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `has_voted`) VALUES
 (5, '201122345@fit.edu.ph', '$2y$10$bpip7Oq.XSJAw1uFjkAo4.yYW5hcJ1cYG8PqDkizmohhqmOHJBIiO', 0),
 (6, '111122345@fit.edu.ph', '$2y$10$n15m98K3FlYoiHZKWkirhOvebOkC6UhlZ8uxxgOaCY8iSpqavamUq', 0),
-(13, '202311439@fit.edu.ph', '$2y$10$hJ0Wu.RK7EgnfbjJEoG3Z.4CgGkbRcZBGL0cqkJuFsMvchAZc5azW', 0);
+(13, '202311439@fit.edu.ph', '$2y$10$hJ0Wu.RK7EgnfbjJEoG3Z.4CgGkbRcZBGL0cqkJuFsMvchAZc5azW', 1),
+(15, '222222222@fit.edu.ph', '$2y$10$W9ZIaodUfeWGE3X08LTvCeaVpHhdkrqGJtl/1CnqqEKTqyafsFXty', 0),
+(16, 'test@test.com', '$2y$10$hcUshOKHyo/e.yHXS5baFepUKHGVu6dHlgxq5xVAavThHE6gklxQe', 0);
 
 -- --------------------------------------------------------
 
@@ -139,6 +151,16 @@ CREATE TABLE `votes` (
   `candidate_id` int(11) NOT NULL,
   `position_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `votes`
+--
+
+INSERT INTO `votes` (`id`, `voter_id`, `candidate_id`, `position_id`) VALUES
+(20, 13, 18, 1),
+(21, 13, 20, 3),
+(22, 13, 21, 4),
+(23, 13, 19, 2);
 
 --
 -- Indexes for dumped tables
@@ -201,31 +223,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `candidates`
 --
 ALTER TABLE `candidates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `elections`
 --
 ALTER TABLE `elections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

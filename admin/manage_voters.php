@@ -6,15 +6,15 @@ validateSession();
 ?>
 
 <?php
-    // Initialize voters list if not set
+    // initialize voters list if not set
     $voters = get_all_voters();
     $_SESSION['voters'] = $voters;
 
 
 
-// Delete voter
+// deletea voter
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_voter'])) {
-    $idToDelete = $_POST['delete_voter'] ?? null;
+    $idToDelete = $_POST['delete_voter'];
 
     if ($idToDelete) {
         $deleted = delete_voter($idToDelete);

@@ -1,6 +1,8 @@
 <?php
     require_once 'db_connect.php';
 
+    // functions to manage admins
+
     function insert_admin($email, $password) {
         global $pdo;
         $hashed = password_hash($password, PASSWORD_DEFAULT);

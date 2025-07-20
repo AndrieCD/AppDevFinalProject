@@ -1,4 +1,6 @@
 <?php
+// bundle up all utility functions in one file para isang require statemet lang
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
